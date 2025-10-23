@@ -1,9 +1,11 @@
 export async function scheduleFetchAll() {
   try {
     const response = await fetch(`${apiConfig.baseUrl}/agendamentos`, {
-      cache: "no-store"
-    });
-
+  cache: "no-store",
+  headers: {
+    "Cache-Control": "no-cache",
+  },
+});
     if (!response.ok) {
       throw new Error(`Erro HTTP! Status: ${response.status}`);
     }
