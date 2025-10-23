@@ -1,0 +1,46 @@
+{
+  "schedules": [
+    {
+      "id": "1751391860152",
+      "name": "Thiago Ferreira",
+      "pet": "Rex",
+      "description": "Banho e Tosa",
+      "when": "2025-07-02T18:00:00.000Z"
+    },
+    {
+      "id": "1751460577801",
+      "name": "Maria da Conceicao",
+      "pet": "Grilo Falante",
+      "description": "Banho",
+      "when": "2025-07-02T23:00:00.000Z"
+    },
+    {
+      "id": "1751460830794",
+      "name": "Andreia Matos",
+      "pet": "Loro Jose",
+      "description": "Escovação",
+      "when": "2025-07-02T13:00:00.000Z"
+    },
+    {
+      "id": "1751476136005",
+      "name": "Thiago Ferreira",
+      "pet": "Rex",
+      "description": "Vacinação",
+      "when": "2025-07-07T19:00:00.000Z"
+    },
+    {
+      "id": "1751480931340",
+      "name": "Fernanda Araujo",
+      "pet": "Gatinha Manhosa",
+      "description": "Corte de unhas",
+      "when": "2025-07-07T12:00:00.000Z"
+    },
+    {
+      "id": "1760879529610",
+      "name": "silvia",
+      "pet": "jack",
+      "description": "banho",
+      "when": "2025-10-19T21:00:00.000Z"
+    }
+  ]
+}

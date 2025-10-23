@@ -1,0 +1,13 @@
+button.btn-info {
+    --bs-btn-padding-x: 20px;
+    --bs-btn-padding-y: 12px;
+    --bs-btn-color: #050505;
+    --bs-btn-bg: var(--content-brand);
+    border: none;
+    font: var(--label-lg);
+    text-transform: uppercase;
+}
+
+.btn-info:hover {
+    background-color: var(--bg-highlights);
+}

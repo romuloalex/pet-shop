@@ -1,0 +1,62 @@
+:root {
+    /*============== TIPOGRAPH ===============*/
+    --font-title: "Inter Tight", sans-serif;
+    --font-text: "Inter", sans-serif;
+    --font-flag: "Familjen Grotesk", sans-serif;
+
+    --title-text: 700 1.5rem/2 var(--font-title);
+    --text-md: 500 .875rem/1.5 var(--font-text);
+    --text-sm: 500 .75rem/1 var(--font-text);
+    --label-lg: 700 1rem/1.5 var(--font-text);
+    --label-md: 700 .875rem/1.5 var(--font-text);
+    --label-sm: 700 .75rem/1 var(--font-text);
+    --text-link: 500 .75rem/1 var(--font-text);
+    --text-flag: 700 1rem/1.5 var(--font-flag);
+
+
+    /*============== COLOR ===============*/
+    --content-primary: #FFFFFF;
+    --content-secondary: #98959D;
+    --content-tertiary: #666666;
+    --content-brand: #9282FA;
+
+    --bg-primary: #151515;
+    --bg-secondary: #1E1E1E;
+    --bg-tertiary: #23242C;
+    --bg-brand: #9282FA;
+    --bg-highlights: #BDB4FA;
+
+    --border-primary: #3E3C41;
+    --border-secondary: #86818C;
+    --border-brand: #9282FA;
+    --border-divisor: #353339;
+
+    --acent-blue: #027DF0;
+    --acent-blue-light: #16487A;
+    --acent-yellow: #F0DC02;
+    --acent-yellow-light: #756E1B;
+    --acent-orange: #F09102;
+    --acent-orange-light: #75501B;
+
+}
+
+html, body {
+    background-color: var(--bg-primary);
+    color: var(--content-secondary);
+}
+
+h5 {
+    color: var(--content-primary);
+    font: var(--title-text);
+}
+h6 {
+    font: var(--label-lg);
+    color: var(--content-primary);
+}
+
+option:disabled {
+    color: #cdcdcd;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
