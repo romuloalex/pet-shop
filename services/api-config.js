@@ -1,3 +1,3 @@
 export const apiConfig = {
-  baseUrl: "https://pet-shop-one-nu.vercel.app/schedules",
+  baseUrl: "https://pet-shop-ten-steel.vercel.app/",
 }
