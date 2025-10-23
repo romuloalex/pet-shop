@@ -2,7 +2,7 @@ import { apiConfig } from "./api-config.js"
 
 export async function scheduleCancel ({ id }) {
     try {
-        const response = await fetch(`${apiConfig.baseUrl}/schedules/${id}`, {
+        const response = await fetch(`${apiConfig.baseUrl}/agendamentos/${id}`, {
             method: "DELETE",
         })
 
