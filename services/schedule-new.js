@@ -3,7 +3,7 @@ import { apiConfig } from "./api-config.js"
 export async function scheduleNew({ id, name, pet, description, when }) {
     try {
         // Faz a requisição para enviar os dados para o banco (API)
-        const response = await fetch(`${apiConfig.baseUrl}/schedules`, {
+        const response = await fetch(`${apiConfig.baseUrl}/agendamentos`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
