@@ -1,23 +1,19 @@
-import { apiConfig } from './api-config.js'; 
+// services/main.js
+import { apiConfig } from './api-config.js'; // Assumindo que está na mesma pasta
 
-//Criar uma função para buscar os dados
+//...
 export async function buscarAgendamentos() {
   try {
-    //Usar a configuração importada para fazer a comunicação
-    const response = await fetch(apiConfig.baseUrl); 
-    
-    //Verificar se o backend respondeu com sucesso
+    // Usa o baseUrl ('/api') + o nome do endpoint ('/agendamentos')
+    const response = await fetch(`${apiConfig.baseUrl}/agendamentos`);
+
+    //... (o resto do seu código está perfeito)
     if (!response.ok) {
       throw new Error(`Erro HTTP! Status: ${response.status}`);
     }
-
-    //Converter a resposta
     const dados = await response.json();
-
-    //Usar os dados
     console.log("Agendamentos recebidos:", dados);
     return dados;
-
   } catch (error) {
     console.error("Não foi possível buscar os agendamentos:", error);
     return null;
