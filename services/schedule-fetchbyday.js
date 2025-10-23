@@ -1,22 +1,19 @@
-import dayjs from "dayjs";
-
-export async function scheduleFetchAll(date) {
+export async function scheduleFetchAll() {
   try {
-    const response = await fetch(`${apiConfig.baseUrl}/agendamentos`);
-    if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
+    const response = await fetch(`${apiConfig.baseUrl}/agendamentos`, {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP! Status: ${response.status}`);
+    }
 
     const data = await response.json();
-
-    // Filtra pelo dia selecionado
-    const dailySchedules = data.filter(schedule => 
-      dayjs(schedule.when).isSame(date, "day")
-    );
-
-    return dailySchedules;
+    return data;
 
   } catch (error) {
-    console.error(error);
-    alert("Não foi possível buscar os agendamentos do dia selecionado.");
+    console.error("Erro ao buscar agendamentos:", error);
+    alert("Não foi possível buscar os agendamentos do servidor.");
     return [];
   }
 }
