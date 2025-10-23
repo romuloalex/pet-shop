@@ -1,25 +1,22 @@
-import { apiConfig } from "./api-config.js"
+import dayjs from "dayjs";
 
-export async function scheduleFetchAll() {
-    try {
-        // Fazer a requisição dos dados do banco de dados (API)
-        const response = await fetch(`${apiConfig.baseUrl}/agendamentos`)
-        // Converte para json
-        const data = await response.json()
+export async function scheduleFetchAll(date) {
+  try {
+    const response = await fetch(`${apiConfig.baseUrl}/agendamentos`);
+    if (!response.ok) throw new Error(`Erro HTTP! Status: ${response.status}`);
 
-        /*
-        //Filtra os agendamentos pelo dia selecionado
-        const dailySchedules = data.filter((schedule) => 
-            dayjs(date).isSame(schedule.when, "day")
-        )
+    const data = await response.json();
 
-        return dailySchedules
-        */
+    // Filtra pelo dia selecionado
+    const dailySchedules = data.filter(schedule => 
+      dayjs(schedule.when).isSame(date, "day")
+    );
 
-        return data
-        
-    } catch (error) {
-        console.log(error)
-        alert("Não foi possivel buscar os agendamentos do dia selecionado")
-    }
+    return dailySchedules;
+
+  } catch (error) {
+    console.error(error);
+    alert("Não foi possível buscar os agendamentos do dia selecionado.");
+    return [];
+  }
 }
