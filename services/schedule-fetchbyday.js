@@ -3,7 +3,7 @@ import { apiConfig } from "./api-config.js"
 export async function scheduleFetchAll() {
     try {
         // Fazer a requisição dos dados do banco de dados (API)
-        const response = await fetch(`${apiConfig.baseUrl}/schedules`)
+        const response = await fetch(`${apiConfig.baseUrl}/agendamentos`)
         // Converte para json
         const data = await response.json()
 
