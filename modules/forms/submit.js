@@ -5,7 +5,7 @@ import { schedulesDay } from "../schedules/load-schedules.js"
 const modalSchedule = document.getElementById("modalSchedule")
 const scheduleSuccess = document.getElementById("scheduleSuccess")
 const svgAlert = document.getElementById("svgAlert")
-const mensageAlert = document.getElementById("mensage-alert")
+const mensageAlert = document.getElementById("mensage-alert") // <--- 'mensage-alert'
 
 const dateForm = document.getElementById("datePickerForm")
 const dateFilter = document.getElementById("datePicker")
@@ -114,22 +114,28 @@ document.addEventListener("DOMContentLoaded", function() {
                         modalInstance.hide()
                     }
 
-                    // Recarrega os agendamentos
+                    // --- ESTA É A LINHA CORRETA QUE VOCÊ JÁ TINHA ---
+                    // Recarrega os agendamentos na tela
                     await schedulesDay()
     
                 } else {
                     
+                    // --- CORREÇÃO NO BLOCO DE ERRO ---
                     if(scheduleSuccess) {
                         scheduleSuccess.classList.remove("d-none")
                         scheduleSuccess.classList.remove("alert-success")
-                        scheduleSuccess.classList.add("d-flex")
-                        scheduleSuccess.classList.add("alert-danger")
-                        scheduleSuccess.textContent = result.message
+                        scheduleSuccess.classList.add("d-flex", "alert-danger") // Adiciona classe de perigo
+                        
+                        // CORREÇÃO 1: Mostrar o SVG
+                        svgAlert.classList.remove("d-none") 
+                        
+                        // CORREÇÃO 2: Usar 'mensageAlert' e não 'scheduleSuccess'
+                        mensageAlert.textContent = result.message 
+                        
                         setTimeout(() => {
                             scheduleSuccess.classList.add("d-none")
-                            scheduleSuccess.classList.remove("d-flex")
-                            scheduleSuccess.classList.add("alert-success")
-                            scheduleSuccess.classList.remove("alert-danger")
+                            scheduleSuccess.classList.remove("d-flex", "alert-danger")
+                            scheduleSuccess.classList.add("alert-success") // Reseta para o padrão
                         }, 7000)
                     }
     
