@@ -1,5 +1,5 @@
 import { schedulesDay } from "./load-schedules.js"
-import { scheduleCancel } from "../../services/schedule-cancel.js"
+import { scheduleCancel } from "./services/schedule-cancel.js"
 
 const confirmDeleteModalElement = document.getElementById("confirmDeleteModal");
 const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
