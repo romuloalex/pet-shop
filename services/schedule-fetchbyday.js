@@ -14,11 +14,12 @@ export async function scheduleFetchAll() {
 
     const data = await response.json();
 
-    // --- CORREÇÃO REFINADA ---
+    // --- CORREÇÃO DA CHAVE ---
+    // O objeto é { schedules: [...] } e não { agendamentos: [...] }
 
-    // Cenário 1: A resposta é um objeto { agendamentos: [...] }
-    if (data && data.agendamentos && Array.isArray(data.agendamentos)) {
-        return data.agendamentos;
+    // Cenário 1: A resposta é um objeto { schedules: [...] }
+    if (data && data.schedules && Array.isArray(data.schedules)) { // <-- Corrigido para 'schedules'
+        return data.schedules; // <-- Corrigido para 'schedules'
     }
     
     // Cenário 2: A resposta já é o array [...]
@@ -26,15 +27,13 @@ export async function scheduleFetchAll() {
         return data;
     }
 
-    // Cenário 3: Resposta é inválida (ex: {}, { "message": "..." })
-    // Retorna null para que o 'load-schedules.js' tente o fallback
+    // Cenário 3: Resposta é inválida
     console.warn("Resposta da API principal não é um array:", data);
     return null; 
 
   } catch (error) {
     console.error("Erro ao buscar agendamentos:", error);
     alert("Não foi possível buscar os agendamentos do servidor.");
-    // Retorna 'null' para acionar o fallback
     return null; 
   }
 }
