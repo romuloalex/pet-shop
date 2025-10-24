@@ -12,6 +12,7 @@
     "server": "json-server --watch server.json --port 3333"
   },
   "dependencies": {
+    "@vercel/kv": "^3.0.0",
     "dayjs": "^1.11.18",
     "imask": "^7.6.1",
     "json-server": "^1.0.0-beta.3"
