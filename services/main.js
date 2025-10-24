@@ -8,17 +8,24 @@ export async function buscarAgendamentos() {
       throw new Error(`Erro HTTP! Status: ${response.status}`);
     }
     const data = await response.json();
-    console.log("Agendamentos recebidos:", data);
+    console.log("Agendamentos recebidos (fallback):", data);
 
-    // --- CORREÇÃO ---
-    // Verifica se a API retornou um objeto (como { agendamentos: [...] })
-    // Se sim, retorna APENAS o array 'agendamentos' de dentro dele.
+    // --- CORREÇÃO REFINADA ---
+    
+    // Cenário 1: A resposta é um objeto { agendamentos: [...] }
     if (data && data.agendamentos && Array.isArray(data.agendamentos)) {
         return data.agendamentos;
     }
     
-    // Se a API já retornou um array, retorna o array.
-    return data;
+    // Cenário 2: A resposta já é o array [...]
+    if (Array.isArray(data)) {
+        return data;
+    }
+
+    // Cenário 3: Resposta é inválida (ex: {}, { "message": "..." })
+    // Retorna null para o 'load-schedules.js' saber que o fallback também falhou
+    console.warn("Resposta do fallback não é um array:", data);
+    return null; 
 
   } catch (error) {
     console.error("Não foi possível buscar os agendamentos:", error);
