@@ -13,21 +13,28 @@ export async function scheduleFetchAll() {
     }
 
     const data = await response.json();
-    
-    // --- CORREÇÃO ---
-    // Verifica se a API retornou um objeto (como { agendamentos: [...] })
-    // Se sim, retorna APENAS o array 'agendamentos' de dentro dele.
+
+    // --- CORREÇÃO REFINADA ---
+
+    // Cenário 1: A resposta é um objeto { agendamentos: [...] }
     if (data && data.agendamentos && Array.isArray(data.agendamentos)) {
         return data.agendamentos;
     }
     
-    // Se a API já retornou um array, retorna o array.
-    return data; 
+    // Cenário 2: A resposta já é o array [...]
+    if (Array.isArray(data)) {
+        return data;
+    }
+
+    // Cenário 3: Resposta é inválida (ex: {}, { "message": "..." })
+    // Retorna null para que o 'load-schedules.js' tente o fallback
+    console.warn("Resposta da API principal não é um array:", data);
+    return null; 
 
   } catch (error) {
     console.error("Erro ao buscar agendamentos:", error);
     alert("Não foi possível buscar os agendamentos do servidor.");
-    // Mantém o retorno 'null' para o fallback funcionar
+    // Retorna 'null' para acionar o fallback
     return null; 
   }
 }
