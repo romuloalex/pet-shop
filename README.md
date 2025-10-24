@@ -6,17 +6,6 @@
 
 Este projeto é uma aplicação web intuitiva e responsiva desenvolvida para otimizar o gerenciamento de agendamentos em clínicas veterinárias, pet shops e centros de estética animal. Com uma interface limpa e funcionalidades essenciais, o Agendamentos PetCare simplifica a vida de profissionais e tutores, garantindo que nenhum compromisso seja perdido e que seus clientes peludos recebam o cuidado no horário certo.
 
-
-## Telas do Sistema
-![MundoPet Page](print_screen/Schedules.jpg)
-*Legenda: Tela Desktop da listagem de agendamentos.*
-
-![MundoPet Page](print_screen/Schedules_Form.jpg)
-*Legenda: Tela Desktop da listagem de agendamentos.*
-
-![Tela Area Funcionário](print_screen/Schedules_Mobile.jpg)
-*Legenda: Tela Mobile da listagem de agendamentos.*
-
 ## Funcionalidades Principais
 
 * **Visualização Dinâmica de Agendamentos:** Navegue facilmente pelos agendamentos diários. A lista é atualizada em tempo real com base na data selecionada, mostrando os compromissos organizados por períodos (manhã, tarde e noite).
