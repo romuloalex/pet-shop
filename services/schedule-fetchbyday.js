@@ -1,6 +1,3 @@
-// services/schedule-fetchbyday.js
-
-// --- CORREÇÃO: Adicionada a importação que faltava ---
 import { apiConfig } from "./api-config.js";
 
 export async function scheduleFetchAll() {
@@ -16,15 +13,21 @@ export async function scheduleFetchAll() {
     }
 
     const data = await response.json();
-    return data;
+    
+    // --- CORREÇÃO ---
+    // Verifica se a API retornou um objeto (como { agendamentos: [...] })
+    // Se sim, retorna APENAS o array 'agendamentos' de dentro dele.
+    if (data && data.agendamentos && Array.isArray(data.agendamentos)) {
+        return data.agendamentos;
+    }
+    
+    // Se a API já retornou um array, retorna o array.
+    return data; 
 
   } catch (error) {
     console.error("Erro ao buscar agendamentos:", error);
     alert("Não foi possível buscar os agendamentos do servidor.");
-    
-    // --- CORREÇÃO: Retornar 'null' em vez de '[]' ---
-    // Isso é crucial para que a lógica de fallback em 
-    // 'load-schedules.js' funcione corretamente.
-    return null;
+    // Mantém o retorno 'null' para o fallback funcionar
+    return null; 
   }
 }
