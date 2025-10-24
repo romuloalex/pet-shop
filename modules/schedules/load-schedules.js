@@ -55,4 +55,18 @@ export async function schedulesDay() {
     const dailySchedulesForDisplay = allSchedulesCache.filter((schedule) => {
         // 1. Pega a data do agendamento (ex: "2025-10-25T01:00:00Z")
         // 2. Formata ela para a string "YYYY-MM-DD" (no fuso local, que é o mesmo do filtro)
-        const scheduleDate = dayjs(schedule.when).format("YYYY
+        const scheduleDate = dayjs(schedule.when).format("YYYY-MM-DD")
+        
+        // 3. Compara as strings (ex: "2025-10-25" === "2025-10-25")
+        // Isso ignora completamente a hora e o fuso horário.
+        return scheduleDate === dateToFilterDisplay
+    })
+    // --- FIM DA CORREÇÃO ---
+
+    // Exibir os agendamentos na página principal
+    scheduleShow({ dailySchedules: dailySchedulesForDisplay })
+
+    // Rendenriza as horas disponíveis no SELECT do form do MODAL
+    // (Chamando a nova função interna para usar o cache)
+    updateModalHours()
+}
