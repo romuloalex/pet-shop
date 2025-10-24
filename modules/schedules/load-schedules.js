@@ -13,15 +13,16 @@ export async function schedulesDay() {
     // A data para exibir na página principal é sempre do filtro ou a atual
     const dateToFilterDisplay = dateFilter.value || dayjs().format("YYYY-MM-DD")
 
-    // Buscar todos os agendamentos usando o método principal
+  // Em: pet-shop/modules/schedules/load-schedules.js
+
     let allSchedules = await scheduleFetchAll()
-    
-    // Se o método principal falhar, tentar com o método alternativo
-    if (!allSchedules || allSchedules.length === 0) {
+     
+    // Se o método principal FALHAR (null/undefined), tentar com o método alternativo
+    if (!allSchedules) { // <--- CORREÇÃO AQUI
         console.log("Tentando método alternativo de busca...")
         allSchedules = await buscarAgendamentos()
     }
-
+    
     // Se ainda não conseguiu buscar dados, usar array vazio
     if (!allSchedules) {
         allSchedules = []
